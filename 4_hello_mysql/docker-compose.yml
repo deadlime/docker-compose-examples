@@ -1,0 +1,22 @@
+version: "3"
+volumes:
+  database-data:
+services:
+  app:
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      - database
+    command: php -S 0.0.0.0:8080 -t /app/www
+    volumes:
+      - .:/app
+  database:
+    image: mysql:5.7
+    volumes:
+      - database-data:/data
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
