@@ -1,0 +1,31 @@
+version: "3"
+volumes:
+  database-data:
+services:
+  database:
+    image: mysql:5.7
+    volumes:
+      - database-data:/data
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+  server:
+    build: ./server
+    depends_on:
+      - database
+    volumes:
+      - ./server:/app
+    environment:
+      PYTHONDONTWRITEBYTECODE: 1
+      FLASK_APP: /app/src/app.py
+      DATABASE_URI: mysql+mysqlconnector://test:test@database/test
+  client:
+    build: ./client
+    depends_on:
+      - server
+    ports:
+      - 8080:8080
+    volumes:
+      - ./client:/app
