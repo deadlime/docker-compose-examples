@@ -1,0 +1,9 @@
+version: "3"
+services:
+  app:
+    image: php:7.1-alpine
+    ports:
+      - 8080:8080
+    command: php -S 0.0.0.0:8080 -t /app/www
+    volumes:
+      - .:/app
