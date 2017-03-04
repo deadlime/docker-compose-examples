@@ -1,0 +1,9 @@
+version: "3"
+volumes:
+  vendor-files:
+services:
+  app:
+    image: composer:1.3
+    volumes:
+      - .:/app
+      - vendor-files:/app/vendor
