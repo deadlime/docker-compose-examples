@@ -1,0 +1,15 @@
+myhostname = localhost
+mydestination = static:OK
+mynetworks = 127.0.0.0/8
+mynetworks_style = host 
+
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+
+virtual_alias_domains = 
+virtual_alias_maps = static:dev
+
+inet_interfaces = all
+inet_protocols = ipv4
+
+home_mailbox = Maildir/

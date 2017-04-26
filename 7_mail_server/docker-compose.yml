@@ -1,0 +1,23 @@
+version: "3"
+volumes:
+  mail-data:
+services:
+  app:
+    image: python:2.7-alpine
+    depends_on:
+      - smtp
+    volumes:
+      - ./app:/app
+    working_dir: /app
+  smtp:
+    build: ./smtp
+    depends_on:
+      - imap
+    volumes:
+      - mail-data:/home/dev/Maildir
+  imap:
+    build: ./imap
+    volumes:
+      - mail-data:/home/dev/Maildir
+    ports:
+      - "143:143"
