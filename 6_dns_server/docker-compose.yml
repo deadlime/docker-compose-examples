@@ -1,0 +1,22 @@
+version: "3"
+networks:
+  default:
+  dnsnet:
+    ipam:
+      config:
+        - subnet: 172.16.113.0/24
+services:
+  dns:
+    build: ./dns
+    networks:
+      default:
+      dnsnet:
+        ipv4_address: 172.16.113.2
+  app:
+    build: ./app
+    links:
+      - dns
+    dns: 172.16.113.2
+    networks:
+      default:
+      dnsnet:

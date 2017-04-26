@@ -1,0 +1,6 @@
+$TTL 1
+@ IN SOA  test.     root.test. (1 1 1 1 1)
+@ IN NS   test.
+@ IN A    127.0.0.1
+
+look-me-up IN A 172.3.4.5
