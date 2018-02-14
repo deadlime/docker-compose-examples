@@ -1,0 +1,12 @@
+version: "3"
+services:
+  web:
+    image: composer:1.3
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: php -S 0.0.0.0:80 -t web/
+  browser:
+    image: selenium/standalone-chrome
+    volumes:
+      - /dev/shm:/dev/shm

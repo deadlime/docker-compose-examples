@@ -1,0 +1,11 @@
+{
+  "require-dev": {
+    "codeception/codeception": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {"DockerComposeExamples\\": "src/"}
+  },
+  "autoload-dev": {
+    "psr-4": {"DockerComposeExamples\\Test\\": "tests/"}
+  }
+}
