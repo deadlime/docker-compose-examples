@@ -1,0 +1,7 @@
+version: "3"
+volumes:
+  mysql:
+services:
+  database:
+    tmpfs:
+      - /var/lib/mysql

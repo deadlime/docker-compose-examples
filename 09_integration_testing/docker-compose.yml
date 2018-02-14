@@ -1,0 +1,24 @@
+version: "3"
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+    working_dir: /app
+    links:
+      - api
+      - database
+    command: php -S 0.0.0.0:80 -t web/
+  api:
+    image: php:7.1-alpine
+    command: php -S 0.0.0.0:80 -t /app/
+    volumes:
+      - ./etc/api/:/app/:ro
+  database:
+    image: mysql:5.7
+    volumes:
+      - ./etc/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
